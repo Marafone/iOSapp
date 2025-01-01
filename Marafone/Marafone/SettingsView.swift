@@ -12,6 +12,7 @@ struct SettingsView: View {
     @State private var password: String = ""
     @State private var showTutorial = false
     @State private var showQuiz = false
+    @State private var autoLogin = false
 
     var body: some View {
     
@@ -32,6 +33,7 @@ struct SettingsView: View {
             .onAppear {
                 username = KeychainHelper.load(forKey: "username") ?? ""
                 password = KeychainHelper.load(forKey: "password") ?? ""
+                autoLogin = true // Enable auto-login on launch
             }
             .navigationTitle("Settings")
             

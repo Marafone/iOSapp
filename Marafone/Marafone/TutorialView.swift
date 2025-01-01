@@ -50,14 +50,26 @@ struct TutorialView: View {
                 
                 Text("Whereas the Aces are worth one whole point")
                     .padding()
-                GeometryReader { geometry in
+                HStack {
                     Image("BastoniAsso")
                         .resizable()
                         .scaledToFit()
-                        .frame(maxHeight: geometry.size.height * 0.5) // 50% of the screen height
-                        
+                        .frame(maxWidth: .infinity) // Allow flexibility in width
+                    Image("DenaraAsso")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                    Image("SpadeAsso")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                    Image("CoppeAsso")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
                 }
-                // Add images of cards for illustration
+                .frame(maxWidth: .infinity) // Ensures the HStack fits the screen width
+                .padding()
             }
             .tabItem { Text("Card Values") }
             
@@ -75,8 +87,31 @@ struct TutorialView: View {
                 Text("Scoring")
                     .font(.title)
                     .padding()
-                Text("Points are calculated based on the captured cards...")
+                Text("Points are calculated at the end of each round based on the captured cards in each trick")
                     .padding()
+                Text("The team that captures the lasti trick is granted one additional point")
+                    .padding()
+                Text("If a player declares a trump suit of which he has the Ace, Deuce and Trey his team is then granted three bonus points, this is called a maraffa")
+                    .padding()
+                
+                HStack {
+                    Image("BastoniAsso")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity) // Allow flexibility in width
+                    Image("BastoniDue")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                    Image("BastoniTre")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                }
+                .frame(maxWidth: .infinity) // Ensures the HStack fits the screen width
+                .padding()
+                Text("A sample maraffa")
+                    .font(.title3)
             }
             .tabItem { Text("Scoring") }
         }
