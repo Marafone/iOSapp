@@ -8,36 +8,49 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var keychainManager: KeychainManager
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var showTutorial = false
     @State private var showQuiz = false
     @State private var autoLogin = false
+    @State private var showSaveMessage = false
 
     var body: some View {
-    
-        VStack{
+        VStack {
             Form {
                 Section(header: Text("Credentials")) {
                     TextField("Username", text: $username)
                         .autocapitalization(.none)
                         .disableAutocorrection(true)
                     SecureField("Password", text: $password)
+                    
+                    Toggle("Auto Login", isOn: $autoLogin)
                 }
                 
                 Button("Save") {
-                    KeychainHelper.save(username, forKey: "username")
-                    KeychainHelper.save(password, forKey: "password")
+                    keychainManager.save(username, forKey: "username")
+                    keychainManager.save(password, forKey: "password")
+                    showSaveMessage = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        showSaveMessage = false
+                    }
                 }
             }
             .onAppear {
-                username = KeychainHelper.load(forKey: "username") ?? ""
-                password = KeychainHelper.load(forKey: "password") ?? ""
-                autoLogin = true // Enable auto-login on launch
+                username = keychainManager.username
+                password = keychainManager.password
             }
             .navigationTitle("Settings")
             
-            Form{
+            if showSaveMessage {
+                Text("Credentials saved!")
+                    .foregroundColor(.green)
+                    .font(.subheadline)
+                    .padding()
+            }
+
+            Form {
                 Button("Tutorial") {
                     showTutorial = true
                 }
@@ -52,6 +65,6 @@ struct SettingsView: View {
                     QuizView()
                 }
             }
-       }
+        }
     }
 }
