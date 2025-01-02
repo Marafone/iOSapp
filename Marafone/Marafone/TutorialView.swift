@@ -10,108 +10,125 @@ import SwiftUI
 
 struct TutorialView: View {
     @Environment(\.dismiss) var dismiss
-    
+
+    // Reusable component for styled images
+    func styledImage(_ imageName: String) -> some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: .infinity)
+    }
+
     var body: some View {
         TabView {
+            // Introduction Tab
             VStack {
                 Text("Welcome to Marafone!")
                     .font(.title)
                     .padding()
-                Text("Marafone is a strategic card game played with a standard deck of Romagnol cards, players play in teams 2 vs 2 and the goal of the game is to be the first team to score 41 points")
+                Text("""
+                    Marafone is a strategic card game played with a standard deck of Romagnol cards.
+                    Players play in teams (2 vs 2), and the goal of the game is to be the first team to score 41 points.
+                    """)
+                    .multilineTextAlignment(.center)
                     .padding()
             }
             .tabItem { Text("Introduction") }
-            
+
+            // Card Values Tab
             VStack {
                 Text("Card Values")
                     .font(.title)
-                Text("Each card has a point value: King, Horseman, Jack, Trey, Deuce are worth 0.33 points each")
+                Text("""
+                    Each card has a point value: King, Horseman, Jack, Trey, and Deuce are worth 0.33 points each.
+                    """)
+                    .multilineTextAlignment(.center)
                     .padding()
+
                 HStack {
-                    Image("BastoniRe")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity) // Allow flexibility in width
-                    Image("BastoniCavallo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                    Image("BastoniTre")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                    Image("BastoniDue")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
+                    styledImage("BastoniRe")
+                    styledImage("BastoniCavallo")
+                    styledImage("BastoniTre")
+                    styledImage("BastoniDue")
                 }
-                .frame(maxWidth: .infinity) // Ensures the HStack fits the screen width
                 .padding()
-                
-                Text("Whereas the Aces are worth one whole point")
+
+                Text("Whereas the Aces are worth one whole point.")
+                    .multilineTextAlignment(.center)
                     .padding()
+
                 HStack {
-                    Image("BastoniAsso")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity) // Allow flexibility in width
-                    Image("DenaraAsso")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                    Image("SpadeAsso")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                    Image("CoppeAsso")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
+                    styledImage("BastoniAsso")
+                    styledImage("DenaraAsso")
+                    styledImage("SpadeAsso")
+                    styledImage("CoppeAsso")
                 }
-                .frame(maxWidth: .infinity) // Ensures the HStack fits the screen width
                 .padding()
             }
             .tabItem { Text("Card Values") }
-            
+
+            // Gameplay Basics Tab
             VStack {
                 Text("Playing a Trick")
                     .font(.title)
                     .padding()
-                Text("A trick is won by the highest card of the leading suit unless a trump is played...")
+                Text("""
+                    A trick is won by the highest card of the leading suit unless a trump is played.
+                    All 4 players play their cards sequentially; the first one chooses the leading suit,
+                    and the others must play cards of the same suit if they have any.
+                    """)
+                    .multilineTextAlignment(.center)
                     .padding()
-                // Add visual examples here
+                Text("Hierarchical order of the cards from strongest to weakest: 3 2 A K H J 7 6 5 4.")
+                    .multilineTextAlignment(.center)
+                    .padding()
+
+                ScrollView(.horizontal) {
+                    HStack {
+                        styledImage("BastoniTre")
+                        styledImage("BastoniDue")
+                        styledImage("BastoniAsso")
+                        styledImage("BastoniRe")
+                        styledImage("BastoniCavallo")
+                        styledImage("BastoniFante")
+                        styledImage("BastoniSette")
+                        styledImage("BastoniSei")
+                        styledImage("BastoniCinque")
+                        styledImage("BastoniQuattro")
+                    }
+                }
+                .padding()
             }
             .tabItem { Text("Gameplay Basics") }
-            
+
+            // Scoring Tab
             VStack {
                 Text("Scoring")
                     .font(.title)
                     .padding()
-                Text("Points are calculated at the end of each round based on the captured cards in each trick")
+                Text("""
+                    Points are calculated at the end of each round based on the captured cards in each trick.
+                    The team that captures the last trick is granted one additional point.
+                    """)
+                    .multilineTextAlignment(.center)
                     .padding()
-                Text("The team that captures the lasti trick is granted one additional point")
+                Text("""
+                    If a player declares a trump suit of which they have the Ace, Deuce, and Trey, 
+                    their team is granted three bonus points. This is called a Maraffa.
+                    """)
+                    .multilineTextAlignment(.center)
                     .padding()
-                Text("If a player declares a trump suit of which he has the Ace, Deuce and Trey his team is then granted three bonus points, this is called a maraffa")
-                    .padding()
-                
+
                 HStack {
-                    Image("BastoniAsso")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity) // Allow flexibility in width
-                    Image("BastoniDue")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
-                    Image("BastoniTre")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: .infinity)
+                    styledImage("BastoniAsso")
+                    styledImage("BastoniDue")
+                    styledImage("BastoniTre")
                 }
-                .frame(maxWidth: .infinity) // Ensures the HStack fits the screen width
                 .padding()
-                Text("A sample maraffa")
+
+                Text("A sample Maraffa")
                     .font(.title3)
+                    .padding(.top)
             }
             .tabItem { Text("Scoring") }
         }
