@@ -13,9 +13,9 @@ struct ContentView: View {
     var body: some View {
         TabView {
             SimpleWebView(keychainManager: keychainManager,
-                          url: URL(string: "http://localhost:5174/login")!)
+                          url: URL(string: "http://localhost:5173/login")!)
                 .tabItem {
-                    Label("WebView", systemImage: "globe")
+                    Label("Marafone", systemImage: "suit.spade.fill")
                 }
 
             NavigationView {
@@ -27,4 +27,8 @@ struct ContentView: View {
             }
         }
     }
+}
+
+#Preview {
+    ContentView()
 }
