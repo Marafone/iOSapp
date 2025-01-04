@@ -27,11 +27,24 @@ struct TutorialView: View {
                     .font(.title)
                     .padding()
                 Text("""
-                    Marafone is a strategic card game played with a standard deck of Romagnol cards.
-                    Players play in teams (2 vs 2), and the goal of the game is to be the first team to score 41 points.
+                    Marafone is a strategic card game played with a standard deck of 40 Romagnol cards.
+                    Players play in teams (2 vs 2), and the goal of the game is to be the first team to score 41 points. Each player receives 10 cards at the beginning of the game.
                     """)
                     .multilineTextAlignment(.center)
                     .padding()
+                Text("""
+                    There are 4 suits of cards: Sticks, Coins, Swords and Cups
+                    """)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
+                HStack {
+                    styledImage("BastoniAsso")
+                    styledImage("DenaraAsso")
+                    styledImage("SpadeAsso")
+                    styledImage("CoppeAsso")
+                }
+                .padding()
             }
             .tabItem { Text("Introduction") }
 
@@ -100,6 +113,22 @@ struct TutorialView: View {
                 .padding()
             }
             .tabItem { Text("Gameplay Basics") }
+            
+            // Trump Suit Tab
+            VStack {
+                Text("Trump Suit")
+                    .font(.title)
+                    .padding()
+                Text("""
+                    The player that is dealt the 4 of Coins is the first one to choose the Trump suit ("Briscola"), this suit beats all of the others for the rest of the hand. Then in the next hand the player to his right chooses the trump suit. It's important to have many cards of this suit since it gives a clear advantage.
+                    """)
+                    .multilineTextAlignment(.center)
+                    .padding()
+
+                styledImage("DenaraQuattro")
+                .padding()
+            }
+            .tabItem { Text("Trump Suit") }
 
             // Scoring Tab
             VStack {

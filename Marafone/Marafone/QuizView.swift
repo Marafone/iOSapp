@@ -17,18 +17,29 @@ struct QuizView: View {
         "Can you play a trump card if you have the leading suit?",
         "What happens if you declare a 'maraffa'?",
         "How many points are required to win the game?",
-        "Who starts the first hand in the game?"
+        "Who starts the first hand in the game?",
+        "What is the trump suit called in Marafone?",
+        "What happens if no trump card is played in a trick?",
+        "Which cards are worth ⅓ of a point?",
+        "What is the value of cards ranked 7, 6, 5, or 4?",
+        "How many cards are dealt to each player?"
     ]
-    
+
     let answers: [[String]] = [
         ["Ace", "King", "Trey"],
         ["Yes", "No"],
         ["3 Bonus Points", "5 Bonus Points"],
         ["41", "51", "31"],
-        ["The dealer", "Player with 4 of Coins", "The last trick winner"]
+        ["The dealer", "Player with 4 of Coins", "The last trick winner"],
+        ["Briscola", "Maraffa", "Tressette"],
+        ["The strongest card of the leading suit wins", "The trick is discarded"],
+        ["Deuces, Treys, and Court Cards", "Kings, Sevens, and Fives"],
+        ["0 points", "⅓ of a point"],
+        ["10 cards", "5 cards", "15 cards"]
     ]
+
+    let correctAnswers: [Int] = [0, 1, 0, 0, 1, 0, 0, 0, 0, 0]
     
-    let correctAnswers: [Int] = [0, 1, 0, 0, 1]
     
     var body: some View {
         VStack {
