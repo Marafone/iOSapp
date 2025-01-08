@@ -63,12 +63,8 @@ struct SettingsView: View {
                         .cornerRadius(10)
                 }
                 .padding(.horizontal)
-
-                if showSaveMessage {
-                    Text("Credentials saved!")
-                        .foregroundColor(.green)
-                        .font(.subheadline)
-                        .padding(.top, 5)
+                .alert("Credentials saved!", isPresented: $showSaveMessage){
+                    Button("OK") { }
                 }
 
                 // Additional Features
@@ -110,6 +106,7 @@ struct SettingsView: View {
                 password = keychainManager.password
             }
             .padding(.bottom, 30)
+
         }
         .background(Color(UIColor.systemGroupedBackground).edgesIgnoringSafeArea(.all))
     }

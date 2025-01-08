@@ -14,14 +14,14 @@ struct QuizView: View {
     
     let questions: [String] = [
         "What card is worth 1 point?",
-        "Can you play a trump card if you have the leading suit?",
+        "Can you play a trump card if you have the leading suit and the trump suit is not the leading one?",
         "What happens if you declare a 'maraffa'?",
         "How many points are required to win the game?",
         "Who starts the first hand in the game?",
         "What is the trump suit called in Marafone?",
         "What happens if no trump card is played in a trick?",
         "Which cards are worth ⅓ of a point?",
-        "What is the value of cards ranked 7, 6, 5, or 4?",
+        "What is the value of cards 7, 6, 5, and 4?",
         "How many cards are dealt to each player?"
     ]
 
