@@ -14,7 +14,9 @@ struct SimpleWebView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> WKWebView {
         let webConfiguration = WKWebViewConfiguration()
-        webConfiguration.preferences.javaScriptEnabled = true
+        let webpagePreferences = WKWebpagePreferences()
+        webpagePreferences.allowsContentJavaScript = true
+        webConfiguration.defaultWebpagePreferences = webpagePreferences
 
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         webView.navigationDelegate = context.coordinator
