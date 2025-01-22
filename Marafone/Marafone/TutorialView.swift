@@ -33,7 +33,7 @@ struct TutorialView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 Text("""
-                    There are 4 suits of cards: Sticks, Coins, Swords and Cups
+                    There are 4 suits of cards: Clubs, Coins, Swords and Cups
                     """)
                     .multilineTextAlignment(.center)
                     .padding()
@@ -66,9 +66,12 @@ struct TutorialView: View {
                 }
                 .padding()
 
-                Text("Whereas the Aces are worth one whole point.")
-                    .multilineTextAlignment(.center)
-                    .padding()
+                Text("""
+                    All of the other cards are not worth any points.
+                    Besides the Aces which are worth one whole point.
+                    """)
+                .multilineTextAlignment(.center)
+                .padding()
 
                 HStack {
                     styledImage("BastoniAsso")
